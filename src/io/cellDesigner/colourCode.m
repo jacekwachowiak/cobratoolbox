@@ -1,9 +1,5 @@
-
-
 % Convert 7 digits to 9 digits for CellDesigner to recongnise.
-
 %a='a'
-
 
 colourScheme={{'#f16359';'#f18d59';'#f9ea76';'#acf3be';'#117e9a'}; % Strawberry Orchard Color Palette
     {'#def595';'#cae45b';'#81c828';'#3dc800';'#279700'};  %Spring Growth Color Palette
@@ -21,7 +17,3 @@ for i=1:size(colourScheme,1);
 end
 
 %hexcode{i}{m}
-
-
-
-
