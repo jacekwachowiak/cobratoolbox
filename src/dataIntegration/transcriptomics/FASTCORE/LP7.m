@@ -1,6 +1,6 @@
 function [V, basis] = LP7( J, model, epsilon, basis)
-% CPLEX implementation of LP-7 for input set J (see FASTCORE paper).
-% Maximises the number of feasible fluxes in J whose value is at least epsilon
+% CPLEX implementation of LP-7 for input set `J` (see FASTCORE paper).
+% Maximises the number of feasible fluxes in `J` whose value is at least `epsilon`
 %
 % USAGE:
 %
@@ -62,19 +62,19 @@ function [V, basis] = LP7( J, model, epsilon, basis)
             solution = solveCobraLP(LPproblem);
         end
     end
-    
+
     if isfield(solution,'basis')
         basis=solution.basis;
     else
         basis=[];
     end
-    
+
     if solution.stat~=1
         fprintf('%s%s\n',num2str(solution.stat),' = solution.stat')
         fprintf('%s%s\n',num2str(solution.origStat),' = solution.origStat')
         warning('LP solution may not be optimal')
     end
-    
+
     x=solution.full;
 
     if ~isempty(x)
@@ -82,4 +82,3 @@ function [V, basis] = LP7( J, model, epsilon, basis)
     else
         V=nan(n,1);
     end
-

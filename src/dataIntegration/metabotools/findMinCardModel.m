@@ -5,12 +5,12 @@ function [modelMin,AddedExchange] = findMinCardModel(model,Ex_Rxns)
 %    [modelMin, AddedExchange] = findMinCardModel(model, Ex_Rxns)
 %
 % INPUTS:
-%     model:         Metabolic model
-%     Ex_Rxns:       Vector of exchange reactions for FVA
+%     model:           Metabolic model
+%     Ex_Rxns:         Vector of exchange reactions for FVA
 %
 % OUTPUTS:
-%    modelMin:       Updated model with new reaction bounds
-%    AddedExchange:  Vector of exchanged reactions
+%    modelMin:         Updated model with new reaction bounds
+%    AddedExchange:    Vector of exchanged reactions
 %
 % .. Authors:
 %       - Ines Thiele 2014

@@ -6,14 +6,14 @@ function [out] = score_KS(mdv, hilo, lambda)
 %    [out] = score_ridge(mdv, hilo, lambda, crossval)
 %
 % INPUTS:
-%    mdv:         structure
-%    hilo:        (0's and 1's), ideally there will be a similar # of each.
+%    mdv:       structure
+%    hilo:      (0's and 1's), ideally there will be a similar # of each.
 %
 % OPTIONAL INPUTS:
-%    lambda:      weighting, if the mean is less than lambda, the scores get weighted less, default = .02
+%    lambda:    weighting, if the mean is less than lambda, the scores get weighted less, default = .02
 %
 % OUTPUT:
-%    out:         score
+%    out:       score
 
 if nargin < 3
     lambda = .02;

@@ -7,46 +7,46 @@ function [tissueModel,Rxns] = createTissueSpecificModel(model, ...
 %    [tissueModel, Rxns] = createTissueSpecificModel(model, expressionData, proceedExp, orphan, exRxnRemove, solver, options, funcModel)
 %
 % INPUTS:
-%    model:               global recon1 model
-%    expressionData:      mRNA expression data structure:
+%    model:             global recon1 model
+%    expressionData:    mRNA expression data structure:
 %
-%                           * Locus - Vector containing `GeneIDs`
-%                           * Data - Presence/Absence Calls
+%                         * Locus - Vector containing `GeneIDs`
+%                         * Data - Presence/Absence Calls
 %
-%                              * Use: (1 - Present, 0 - Absent) when proceedExp = 1
-%                              * Use: (2 - Present, 1 - Marginal, 0 - Absent) when proceedExp = 0
-%                           * Transcript - RefSeq Accession (only required if proceedExp = 0)
+%                           * Use: (1 - Present, 0 - Absent) when proceedExp = 1
+%                           * Use: (2 - Present, 1 - Marginal, 0 - Absent) when proceedExp = 0
+%                         * Transcript - RefSeq Accession (only required if proceedExp = 0)
 %
 % OPTIONAL INPUTS:
-%    proceedExp:          1 - data are processed ; 0 - data need to be
-%                         processed (Default = 1)
-%    orphan:              1 - leave orphan reactions in model for Shlomi Method
-%                         0 - remove orphan reactions
-%                         (Default = 1)
-%    exRxnRemove:         Names of exchange reactions to remove
-%                         (Default = [])
-%    solver:              Use either 'GIMME', 'iMAT', or 'Shlomi' to create tissue
-%                         specific model. 'Shlomi' is the same as 'iMAT' the names
-%                         are just maintained for historical purposes.
-%                         (Default = 'GIMME')
-%    options:             If using GIMME, enter `objectiveCol` here
-%                         Default: objective function with 90% flux cutoff,
-%                         written as: `[find(model.c) 0.9]`
-%    funcModel:           1 - Build a functional model having only reactions
-%                         that can carry a flux (using `FVA`), 0 - skip this
-%                         step (Default = 0)
+%    proceedExp:        1 - data are processed ; 0 - data need to be
+%                       processed (Default = 1)
+%    orphan:            1 - leave orphan reactions in model for Shlomi Method
+%                       0 - remove orphan reactions
+%                       (Default = 1)
+%    exRxnRemove:       Names of exchange reactions to remove
+%                       (Default = [])
+%    solver:            Use either 'GIMME', 'iMAT', or 'Shlomi' to create tissue
+%                       specific model. 'Shlomi' is the same as 'iMAT' the names
+%                       are just maintained for historical purposes.
+%                       (Default = 'GIMME')
+%    options:           If using GIMME, enter `objectiveCol` here
+%                       Default: objective function with 90% flux cutoff,
+%                       written as: `[find(model.c) 0.9]`
+%    funcModel:         1 - Build a functional model having only reactions
+%                       that can carry a flux (using `FVA`), 0 - skip this
+%                       step (Default = 0)
 %
 % OUTPUTS:
-%    tissueModel:         Model produced by GIMME or iMAT, containing only
-%                         reactions carrying flux
-%    Rxns:                Statistics of test:
+%    tissueModel:       Model produced by GIMME or iMAT, containing only
+%                       reactions carrying flux
+%    Rxns:              Statistics of test:
 %
-%                              * ExpressedRxns - predicted by mRNA data
-%                              * UnExpressedRxns - predicted by mRNA data
-%                              * unknown - unable to be predicted by mRNA data
-%                              * Upregulated - added back into model
-%                              * Downregulated - removed from model
-%                              * UnknownIncluded - orphans added
+%                         * ExpressedRxns - predicted by mRNA data
+%                         * UnExpressedRxns - predicted by mRNA data
+%                         * unknown - unable to be predicted by mRNA data
+%                         * Upregulated - added back into model
+%                         * Downregulated - removed from model
+%                         * UnknownIncluded - orphans added
 %
 % If there are multiple transcripts to one probe that have different
 % expression patterns the script will ask what the locus is of the

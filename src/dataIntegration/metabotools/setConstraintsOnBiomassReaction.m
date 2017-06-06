@@ -6,13 +6,13 @@ function [modelBM] = setConstraintsOnBiomassReaction(model,of,dT,tolerance)
 %    [modelBM] = setConstraintsOnBiomassReaction(model, of, dT, tolerance)
 %
 % INPUTS:
-%    model:           Metabolic model (e.g., Recon)
-%    of:              Objective funtion, e.g., `biomass_reaction`
-%    dT:              Doubling time
-%    tolerance:       Upper and lower limit of the growth rate are adjusted according to this tolerance value, e.g., 20 (%).
+%    model:        Metabolic model (e.g., Recon)
+%    of:           Objective funtion, e.g., `biomass_reaction`
+%    dT:           Doubling time
+%    tolerance:    Upper and lower limit of the growth rate are adjusted according to this tolerance value, e.g., 20 (%).
 %
 % OUTPUTS:
-%    modelBM:         Model constrained with condition-specific growth rates
+%    modelBM:      Model constrained with condition-specific growth rates
 %
 % .. Author: - Maike K. Aurich 13/02/15
 

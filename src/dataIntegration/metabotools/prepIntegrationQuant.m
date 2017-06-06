@@ -17,28 +17,28 @@ function prepIntegrationQuant(model,metData,exchanges,samples,test_max,test_min,
 %    prepIntegrationQuant(model, metData, exchanges, samples, test_max, test_min, outputPath, tol, variation)
 %
 % INPUTS:
-%       model:                   Prepared global model (e.g., `model_for_CORE` from `prepModel`)
-%       exchanges:               Vector containing exchange reactions
-%       metData:                 Fluxes of uptake (negative) and secretion(positive) flux values. The columns are the samples and the rows are the metabolites (Unit matching remaining model constraints!).
-%       samples:                 Vector of sample names (no dublicate names)
-%       test_max:                Minimal uptake/secretion set while testing if model can perform uptake and secretion of a metabolite (e.g., 500)
-%       test_min:                Maximal uptake/secretion set while testing if model can perform uptake and secretion of a metabolite (e.g., 0.00001)
-%       outputPath:              Path where output files should be saved (e.g. 'Y:\Studies\Data_integration\CORE\usingRecon1\models\')
-%       tol:                     All fluxes below this value are considered to be zero, (e.g., 1e-6)
-%       variation:               Lower and upper bound are established with this value as error range in % (e.g.,20)
+%       model:                       Prepared global model (e.g., `model_for_CORE` from `prepModel`)
+%       exchanges:                   Vector containing exchange reactions
+%       metData:                     Fluxes of uptake (negative) and secretion(positive) flux values. The columns are the samples and the rows are the metabolites (Unit matching remaining model constraints!).
+%       samples:                     Vector of sample names (no dublicate names)
+%       test_max:                    Minimal uptake/secretion set while testing if model can perform uptake and secretion of a metabolite (e.g., 500)
+%       test_min:                    Maximal uptake/secretion set while testing if model can perform uptake and secretion of a metabolite (e.g., 0.00001)
+%       outputPath:                  Path where output files should be saved (e.g. 'Y:\Studies\Data_integration\CORE\usingRecon1\models\')
+%       tol:                         All fluxes below this value are considered to be zero, (e.g., 1e-6)
+%       variation:                   Lower and upper bound are established with this value as error range in % (e.g.,20)
 %
 % For every sample a file is automatically saved and contains the following variables:
 %
-%       * Secretion_not_possible:  Vector of metabolite (exchange reactions) that cannot be secreted by the model
-%       * Uptake_not_possible:     Vector of metabolite (exchange reactions) that cannot be uptaken by the model
-%       * FBA_all_secreted:        FBA results of test metabolite secretion
-%       * FBA_all_secreted_names:  Name of exchange test metabolite secretion
-%       * FBA_all_uptake:          FBA results of test metabolite uptake
-%       * FBA_all_uptake_names:    Name of exchange test metabolite uptake
-%       * uptake:                  Vector of exchange reactions that are associated with uptake in the cell line (no additional exchanges, since these reactions will not be closed)
-%       * uptake_value:            Matrix of flux values, constitute the lower (column 2) and upper (column 3) limits for the model uptake
-%       * secretion:               Vector of exchange reactions that are associated with secretion in the cell line (no additional exchanges, since these reactions will not be closed)
-%       * secr_value:              Matrix of flux values, constitute the lower (column 2) and upper (column 3) limits for the model secretion
+%       * Secretion_not_possible:    Vector of metabolite (exchange reactions) that cannot be secreted by the model
+%       * Uptake_not_possible:       Vector of metabolite (exchange reactions) that cannot be uptaken by the model
+%       * FBA_all_secreted:          FBA results of test metabolite secretion
+%       * FBA_all_secreted_names:    Name of exchange test metabolite secretion
+%       * FBA_all_uptake:            FBA results of test metabolite uptake
+%       * FBA_all_uptake_names:      Name of exchange test metabolite uptake
+%       * uptake:                    Vector of exchange reactions that are associated with uptake in the cell line (no additional exchanges, since these reactions will not be closed)
+%       * uptake_value:              Matrix of flux values, constitute the lower (column 2) and upper (column 3) limits for the model uptake
+%       * secretion:                 Vector of exchange reactions that are associated with secretion in the cell line (no additional exchanges, since these reactions will not be closed)
+%       * secr_value:                Matrix of flux values, constitute the lower (column 2) and upper (column 3) limits for the model secretion
 %
 %
 % .. Depends on `optimizeCbModel`, `changeRxnBounds`

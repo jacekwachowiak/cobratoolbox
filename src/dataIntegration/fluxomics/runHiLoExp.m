@@ -34,7 +34,7 @@ function [experiment] = runHiLoExp(experiment)
 %                       if the targets have been replaced using the param list
 %                     * mdvs = structure of `mdv` results:
 %
-%                       * (name) = name of the run = `t + glc#` e.g. t1, t2, glc# refers to the glc in the glcs array.
+%                       * (name) = name of the run = `t + glc#` e.g. `t1`, `t2`, `glc#` refers to the glc in the glcs array.
 
 %                       Note that the split of mdvs are not stored,
 %                       also since the only time mdvs should be regen'd is when glcs

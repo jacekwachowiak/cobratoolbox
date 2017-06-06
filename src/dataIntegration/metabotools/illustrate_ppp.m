@@ -7,15 +7,15 @@ function illustrate_ppp(ResultsAllCellLines,mets,path,samples,label,fonts,tol)
 %     illustrate_ppp(ResultsAllCellLines, mets, path, samples, label, fonts, tol)
 %
 % INPUTS:
-%    ResultsAllCellLines:     Result structure
-%    mets:                    Metabolites that were tested in the phase plane analysis
-%    step_size:               Step size of each metabololite tested
-%    path:                    Path where output is saved
-%    samples:                 Names of conditions
-%    label:                   Defining label of X-axis, y-axis and z-axis, e.g., {`Glucose uptake (fmol/cell/hr)`; `Oxygen uptake
-%                             (fmol/cell/hr)`; `Growth rate (hr-1)`} The z-axis is the growth rate which is color coded
-%    fonts:                   Font size for labels on heatmap
-%    tol:                     Fluxes are considered zero if they are below the tol
+%    ResultsAllCellLines:    Result structure
+%    mets:                   Metabolites that were tested in the phase plane analysis
+%    step_size:              Step size of each metabololite tested
+%    path:                   Path where output is saved
+%    samples:                Names of conditions
+%    label:                  Defining label of X-axis, y-axis and z-axis, e.g., {`Glucose uptake (fmol/cell/hr)`; `Oxygen uptake
+%                            (fmol/cell/hr)`; `Growth rate (hr-1)`} The z-axis is the growth rate which is color coded
+%    fonts:                  Font size for labels on heatmap
+%    tol:                    Fluxes are considered zero if they are below the tol
 %
 % Individual pdf files showing the result of the PPP are being saved automatically for each condition.
 %

@@ -8,12 +8,12 @@ function [modelGE] = integrateGeneExpressionData(model,dataGenes)
 %    [modelGE] = integrateGeneExpressionData(model, dataGenes)
 %
 % INPUTS:
-%    model:           Metabolic model (e.g., Recon)
-%    dataGenes:       Vector of absent genes. Follow the supplemental tutorial of *DOI: 10.1371/journal.pone.0049978 (Aurich and Thiele, PloS One, 2012)* for the generation of P/A calls, e.g., `Absent_genes` = [535;1548];
+%    model:        Metabolic model (e.g., Recon)
+%    dataGenes:    Vector of absent genes. Follow the supplemental tutorial of `DOI: 10.1371/journal.pone.0049978 (Aurich and Thiele, PloS One, 2012)` for the generation of P/A calls, e.g., `Absent_genes` = [535;1548];
 %
 % OUTPUT:
-%    modelGE:         Model, where all genes in `DataGenes` have been constrained to zero. Follow the supplemental tutorial of
-%                     *DOI:10.1371/journal.pone.0049978 (Aurich and Thiele, PloS One, 2012)* for description of potentially necessary curation.
+%    modelGE:      Model, where all genes in `DataGenes` have been constrained to zero. Follow the supplemental tutorial of
+%                  `DOI:10.1371/journal.pone.0049978 (Aurich and Thiele, PloS One, 2012)` for description of potentially necessary curation.
 %
 % .. Author: - Maike K. Aurich 13/02/15 (Depends on deleteModelGene)
 
@@ -35,5 +35,5 @@ end
 
 
 DeleteGenes_Metabol_Transcriptome = [];
-[modelGE, hasEffect,constrRxnNames,deletedGenes] = deleteModelGenes(model,ExpressionData.Transcript); 
+[modelGE, hasEffect,constrRxnNames,deletedGenes] = deleteModelGenes(model,ExpressionData.Transcript);
 end

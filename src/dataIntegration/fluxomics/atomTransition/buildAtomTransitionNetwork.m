@@ -9,13 +9,13 @@ function ATN = buildAtomTransitionNetwork(model, rxnfileDir)
 % INPUTS:
 %    model:         Structure with following fields:
 %
-%                     * .S - The `m` x `n` stoichiometric matrix for the metabolic network
-%                     * .mets - An `m` x 1 array of metabolite identifiers. Should match
+%                     * .S - The `m x n` stoichiometric matrix for the metabolic network
+%                     * .mets - An `m x 1` array of metabolite identifiers. Should match
 %                       metabolite identifiers in `rxnfiles`.
-%                     * .rxns - An `n` x 1 array of reaction identifiers. Should match
+%                     * .rxns - An `n x 1` array of reaction identifiers. Should match
 %                       rxnfile names in `rxnFileDir`.
-%                     * .lb -  An `n` x 1 vector of lower bounds on fluxes.
-%                     * .ub - An `n` x 1 vector of upper bounds on fluxes.
+%                     * .lb -  An `n x 1` vector of lower bounds on fluxes.
+%                     * .ub - An `n x 1` vector of upper bounds on fluxes.
 %    rxnfileDir:    Path to directory containing `rxnfiles` with atom mappings
 %                   for internal reactions in `S`. File names should
 %                   correspond to reaction identifiers in input `rxns`.
@@ -23,17 +23,17 @@ function ATN = buildAtomTransitionNetwork(model, rxnfileDir)
 % OUTPUT:
 %    ATN:           Structure with following fields:
 %
-%                     * .A - A `p` x `q` sparse incidence matrix for the atom transition
+%                     * .A - A `p x q` sparse incidence matrix for the atom transition
 %                       network, where `p` is the number of atoms and `q` is
 %                       the number of atom transitions.
-%                     * .mets - A `p` x 1 cell array of metabolite identifiers to link
+%                     * .mets - A `p x 1` cell array of metabolite identifiers to link
 %                       atoms to their metabolites. The order of atoms is the
 %                       same in `A` as in the molfile for each metabolite.
-%                     * .rxns - A `q` x 1 cell array of reaction identifiers to link atom
+%                     * .rxns - A `q x 1` cell array of reaction identifiers to link atom
 %                       transitions to their reactions. The order of atom
 %                       transitions is the same in `A` as in the `rxnfile` (with
 %                       atom mappings) for each reaction.
-%                     * .elements - A `p` x 1 cell array of element symbols for atoms in `A`.
+%                     * .elements - A `p x 1` cell array of element symbols for atoms in `A`.
 %
 % .. Author: - Hulda S. Haraldsdóttir and Ronan M. T. Fleming, June 2015
 

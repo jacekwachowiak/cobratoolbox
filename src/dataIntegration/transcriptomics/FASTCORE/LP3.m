@@ -1,5 +1,5 @@
 function [V, basis] = LP3(J, model, basis)
-% CPLEX implementation of LP-3 for input set J (see FASTCORE paper)
+% CPLEX implementation of LP-3 for input set `J` (see FASTCORE paper)
 %
 % USAGE:
 %

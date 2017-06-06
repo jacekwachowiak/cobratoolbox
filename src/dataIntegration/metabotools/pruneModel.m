@@ -7,16 +7,16 @@ function [modelUpdated,modelPruned,Ex_Rxns] = pruneModel(model,minGrowth, biomas
 %    [modelUpdated, modelPruned, Ex_Rxns] = pruneModel(model, minGrowth, biomassRxn)
 %
 % INPUTS:
-%    model:         model structure
-%    minGrowth:     minimal Growth rate to be set on biomass reaction
-%    biomassRxn:    biomass reaction name (default: 'biomass_reaction2')
+%    model:           model structure
+%    minGrowth:       minimal Growth rate to be set on biomass reaction
+%    biomassRxn:      biomass reaction name (default: 'biomass_reaction2')
 %
-% OUTPUTS: 
-%    modelUpdated:  same as input model but constraints on blocked reactions
-%                   are set to be 0
-%    modelPruned:   pruned model, where all blocked reactions are removed
-%                   (attention this seems to cause issues with GPRs)
-%    Ex_Rxns:       List of exchange reactions in pruned model
+% OUTPUTS:
+%    modelUpdated:    same as input model but constraints on blocked reactions
+%                     are set to be 0
+%    modelPruned:     pruned model, where all blocked reactions are removed
+%                     (attention this seems to cause issues with GPRs)
+%    Ex_Rxns:         List of exchange reactions in pruned model
 %
 % .. Author: - Ines Thiele, 02/2014
 

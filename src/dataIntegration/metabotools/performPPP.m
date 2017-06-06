@@ -1,4 +1,4 @@
-function [ResultsAllCellLines] = performPPP(ResultsAllCellLines,mets,step_size,samples,step_num,direct)
+function [ResultsAllCellLines] = performPPP(ResultsAllCellLines, mets, step_size, samples, step_num, direct)
 % This function performs the a phase plane analysis. The analysis starts from zero and proceed `step_num*step_size` in the specified direction and for two exchanges.
 % the results of the analysis will be saved into `ResultsAllCellLines`.
 %
@@ -7,15 +7,15 @@ function [ResultsAllCellLines] = performPPP(ResultsAllCellLines,mets,step_size,s
 %    [ResultsAllCellLines] = performPPP(ResultsAllCellLines, mets, step_size, samples, step_num, direct)
 %
 % INPUTS:
-%    ResultsAllCellLines:
-%    samples:                 Conditions
-%    mets:                    Set of two metabolites to test e.g.  mets ={`EX_glc(e)`, `EX_gln(e)`; `EX_o2(e)`, `EX_o2(e)`}
-%    step_size:               Step size for metabolites specified in mets e.g., `step_size` = 100
-%    direct:                  Direction for metabolites specified in mets: uptake (-1) or secretion (1), e.g., direct = [-1,-1,-1,-1];
-%    step_num:                Number of steps (1000/20 = 50), step_num = [5,5;5,5]
+%    ResultsAllCellLines:    Structure containing the pruned submodels of the samples
+%    samples:                Conditions
+%    mets:                   Set of two metabolites to test e.g.  mets ={`EX_glc(e)`, `EX_gln(e)`; `EX_o2(e)`, `EX_o2(e)`}
+%    step_size:              Step size for metabolites specified in mets e.g., `step_size` = 100
+%    direct:                 Direction for metabolites specified in mets: uptake (-1) or secretion (1), e.g., direct = [-1,-1,-1,-1];
+%    step_num:               Number of steps (1000/20 = 50), step_num = [5,5;5,5]
 %
 % OUTPUT:
-%    ResultsAllCellLines:     The matrix of growth rates are added to the `ResultsAllCellLines` structure alond with the values or the bounds using the same of the manipulated exchanges
+%    ResultsAllCellLines:    The matrix of growth rates are added to the `ResultsAllCellLines` structure alond with the values or the bounds using the same of the manipulated exchanges
 %
 % .. Author: - Maike K. Aurich 08/07/15 (performed as in Jeff Orth et al. 2010, Supplemental tutorial.)
 

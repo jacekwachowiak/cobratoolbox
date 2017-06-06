@@ -1,7 +1,7 @@
 function [flux] = conc2Rate(metConc, cellConc, t, cellWeight)
 % Converts metabolite concentration and (viable) cell concentration into
 % uptake rate.
-% CellConc consumed MetConc in t.
+% `cellConc` consumed `metConc` in `t`.
 %
 % USAGE:
 %

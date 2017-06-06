@@ -6,16 +6,16 @@ function writeRxnfile(s, mets, molfileNames, molfileDirectory, rxnfileName, rxnf
 %     writeRxnfile(s, mets, molfileNames, molfileDirectory, rxnfileName, rxnfileDirectory)
 %
 % INPUTS:
-%    s:                   An `m` x 1 vector of stoichiometric coefficients.
-%    mets:                An `m` x 1 cell array of metabolite identifiers.
+%    s:                   An `m x 1` vector of stoichiometric coefficients.
+%    mets:                An `m x 1` cell array of metabolite identifiers.
 %
 % OPTIONAL INPUTS:
-%    molfileNames:        An `m` x 1 cell array of molfile names for
+%    molfileNames:        An `m x 1` cell array of molfile names for
 %                         metabolites in mets. Defaults to mets.
 %    molfileDirectory:    Path to directory containing input molfiles.
 %                         Defaults to current directory.
 %    rxnfileName:         A name for the output rxnfile. Defaults to
-%                        'rxn.rxn'.
+%                         'rxn.rxn'.
 %    rxnfileDirectory:    Path to directory where the output rxnfile should
 %                         be saved. Defaults to current directory.
 %

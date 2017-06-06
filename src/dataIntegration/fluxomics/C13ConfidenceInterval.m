@@ -1,6 +1,4 @@
 function [vs, output, v0] = C13ConfidenceInterval(v0, expdata, model, max_score, directions, majorIterationLimit)
-%
-%
 % USAGE:
 %
 %    [vs, output, v0] = C13ConfidenceInterval(v0, expdata, model, max_score, directions, majorIterationLimit)
@@ -8,19 +6,19 @@ function [vs, output, v0] = C13ConfidenceInterval(v0, expdata, model, max_score,
 % INPUTS:
 %    v0:                     set of flux vectors to be used as initial guesses.  They may be valid or not.
 %    expdata:                experimental data
-%    model:                  the standard model. Additional field .N (= null(S)) should also
+%    model:                  the standard model. Additional field `.N (= null(S))` should also
 %                            be provided. This is a basis of the flux space.
 %    max_score:              maximum allowable data fit error
 %
 % OPTIONAL INPUTS:
-%    directions:             ones and zeros of which reactions to compute (size = `n` x 1) or numbers of reactions to use  aka. [1; 5; 7; 8; 200] or
+%    directions:             ones and zeros of which reactions to compute (size = `n x 1`) or numbers of reactions to use  aka. [1; 5; 7; 8; 200] or
 %                            reaction strings  aka.  {'GPK', 'PGL'}.  Ratios are possible with this input only.  Default = [] meaning  - do FVA with no ratios.
 %    majorIterationLimit:    default = 10000
 %
 % OUTPUT:
 %    vs:                     matrix
 %    output:                 structure
-%    v0:                     as in input
+%    v0:                     set of flux vectors as in input
 
 if nargin < 5
     directions = ones(size(v0,1),1);

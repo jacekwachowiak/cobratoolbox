@@ -7,22 +7,22 @@ function [modelMin, modelPruned, Ex_Rxns] = generateCompactExchModel(model,minGr
 %    [modelMin, modelPruned, Ex_Rxns] = generateCompactExchModel(model, minGrowth, biomassRxn, prune, fastFVA)
 %
 % INPUTS:
-%    model:         model structure
-%    minGrowth:     minimal Growth rate to be set on biomass reaction
-%    biomassRxn:    biomass reaction name (default: 'biomass_reaction2')
-%    prune:         optional: to prune the model based on exchange reactions
-%                   (default: 1)
-%    fastFVA:       optional: to use fastFVA instead of fluxvariability for
-%                   computing FVA results (default: 0)
-%    medium:        (default: {})
+%    model:           model structure
+%    minGrowth:       minimal Growth rate to be set on biomass reaction
+%    biomassRxn:      biomass reaction name (default: 'biomass_reaction2')
+%    prune:           optional: to prune the model based on exchange reactions
+%                     (default: 1)
+%    fastFVA:         optional: to use fastFVA instead of fluxvariability for
+%                     computing FVA results (default: 0)
+%    medium:          (default: {})
 %
 % OUTPUTS:
-%    modelUpdated:  same as input model but constraints on blocked reactions
-%                   are set to be 0
-%    modelPruned:   pruned model, where all blocked reactions are removed
-%                   (attention this seems to cause issues with GPRs)
-%    Ex_Rxns:       List of exchange reactions in pruned model
-% 
+%    modelUpdated:    same as input model but constraints on blocked reactions
+%                     are set to be 0
+%    modelPruned:     pruned model, where all blocked reactions are removed
+%                     (attention this seems to cause issues with GPRs)
+%    Ex_Rxns:         List of exchange reactions in pruned model
+%
 % .. Author: - Ines Thiele, 02/2014
 
 medium={};
@@ -87,4 +87,3 @@ else
     modelPruned = struct();
     Ex_Rxns = '';
 end
-

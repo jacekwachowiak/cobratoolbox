@@ -13,25 +13,25 @@ function [stats, statsR] = summarizeSamplingResults(modelA,modelB,path,nFiles,po
 %    [stats, statsR] = summarizeSamplingResults(modelA, modelB, path, nFiles, pointsPerFile, starting_model, dataGenes, show_rxns, fonts, hist_per_page, bin, fileNameA, fileNameB)
 %
 % INPUTS:
-%    modelA:                     Sampled modelA (condition 1)
-%    modelB:                     Sampled modelB (condition 2)
-%    path:                       Path to sampling output files
-%    nFiles:                     Number of files saved, e.g., 20;
-%    pointsPerFilePoints:        Points saved per file, e.g., 5000;
-%    starting_model:             Original metabolic model (Recon)
-%    dataGenes:                  Gene set, whose associated reactions should be emphasized by color, e.g., alternatively spliced or differentially expressed genes
+%    modelA:                 Sampled modelA (condition 1)
+%    modelB:                 Sampled modelB (condition 2)
+%    path:                   Path to sampling output files
+%    nFiles:                 Number of files saved, e.g., 20;
+%    pointsPerFilePoints:    Points saved per file, e.g., 5000;
+%    starting_model:         Original metabolic model (Recon)
+%    dataGenes:              Gene set, whose associated reactions should be emphasized by color, e.g., alternatively spliced or differentially expressed genes
 %
 % OPTIONAL INPUTS:
-%    show_rxns:                  Vector of reactions that should be displayed, e.g., certain pathways or non-loop reactions
-%    fonts:                      Font size (default = 9)
-%    hist_per_page:              Defines the number of histogramms that are printed per page, e.g., 4, 9, or 25 (default = 9)
-%    bin:                        Binning for histogramm (default = 30)
-%    fileNameA:                  Name of files the sampling points are stored in
-%    fileNameB:                  Name of files the sampling points are stored in
+%    show_rxns:              Vector of reactions that should be displayed, e.g., certain pathways or non-loop reactions
+%    fonts:                  Font size (default = 9)
+%    hist_per_page:          Defines the number of histogramms that are printed per page, e.g., 4, 9, or 25 (default = 9)
+%    bin:                    Binning for histogramm (default = 30)
+%    fileNameA:              Name of files the sampling points are stored in
+%    fileNameB:              Name of files the sampling points are stored in
 %
 % OUTPUTS:
-%    stats:                      Statistics from the sampling (Columns: Median modelA, Median modelB, minFlux_A, maxFlux_A, minFlux_B, maxFlux_B )
-%    statsR:                     Reaction vector for stats output
+%    stats:                  Statistics from the sampling (Columns: Median modelA, Median modelB, minFlux_A, maxFlux_A, minFlux_B, maxFlux_B )
+%    statsR:                 Reaction vector for stats output
 %
 % Depends on COBRA functions: `loadsamples`, `findRxnsFromGenes`, flux
 % variability analysis / `fastFVA`

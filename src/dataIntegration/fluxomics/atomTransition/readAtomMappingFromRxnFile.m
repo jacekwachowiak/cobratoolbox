@@ -1,5 +1,5 @@
 function [mets, elements, metNrs, rxnNrs, isSubstrate, instances] = readAtomMappingFromRxnFile(rxnfileName, rxnfileDirectory)
-% Read atom mappings from a rxnfile (Accelrys, San Diego, CA), written with
+% Read atom mappings from a `rxnfile` (Accelrys, San Diego, CA), written with
 % `writeRxnfile.m`.
 %
 % USAGE:
@@ -14,15 +14,15 @@ function [mets, elements, metNrs, rxnNrs, isSubstrate, instances] = readAtomMapp
 %                         to current directory.
 %
 % OUTPUTS:
-%    mets:                A `p` x 1 cell array of metabolite identifiers for atoms.
-%    elements:            A `p` x 1 cell array of element symbols for atoms.
-%    metNrs:              A `p` x 1 vector containing the numbering of atoms within
+%    mets:                A `p x 1` cell array of metabolite identifiers for atoms.
+%    elements:            A `p x 1` cell array of element symbols for atoms.
+%    metNrs:              A `p x 1` vector containing the numbering of atoms within
 %                         each metabolite molfile.
-%    rxnNrs:              A `p` x 1 vector of atom mappings, i.e., the numbering of
+%    rxnNrs:              A `p x 1` vector of atom mappings, i.e., the numbering of
 %                         atoms within the reaction.
-%    isSubstrate:         A `p` x 1 logical array. True for substrates, false for
+%    isSubstrate:         A `p x 1` logical array. True for substrates, false for
 %                         products in the reaction.
-%    instances:           A `p` x 1 vector indicating which instance of a repeated metabolite atom `i` belongs to.
+%    instances:           A `p x 1` vector indicating which instance of a repeated metabolite atom `i` belongs to.
 %
 % .. Author: - Hulda S. Haraldsdóttir and Ronan M. T. Fleming, June 2015
 

@@ -11,18 +11,18 @@ function tissueModel = GIMME(model, expressionRxns, threshold, obj_frac)
 %
 % INPUTS:
 %
-%    model:               input model (COBRA model structure)
-%    expressionRxns:      expression data, corresponding to model.rxns (see
-%                         mapGeneToRxn.m)
+%    model:             input model (COBRA model structure)
+%    expressionRxns:    expression data, corresponding to model.rxns (see
+%                       mapGeneToRxn.m)
 %
 % OPTIONAL INPUTS:
-%    threshold:           expression threshold, reactions below this are
-%                         minimized (default - ExpressionRxns > 75 percentile)
-%    obj_frac:            minimum fraction of the objective(s) of model
-%                         (default value - 0.9)
+%    threshold:         expression threshold, reactions below this are
+%                       minimized (default - ExpressionRxns > 75 percentile)
+%    obj_frac:          minimum fraction of the objective(s) of model
+%                       (default value - 0.9)
 %
 % OUTPUTS:
-%    tissueModel:         extracted model
+%    tissueModel:       extracted model
 %
 % `Becker and Palsson (2008). Context-specific metabolic networks are
 % consistent with experiments. PLoS Comput. Biol. 4, e1000082.`
