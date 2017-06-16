@@ -1,22 +1,24 @@
 function [modelOut, removedRxnInd, keptRxnInd] = checkDuplicateRxn(model, method, removeFlag, printLevel, boundsFlag)
 % Checks model for duplicate reactions and removes them
-% By default, it detects the columns of S that are identical upto scalar 
+% By default, it detects the columns of S that are identical upto scalar
 % multiplication
 %
 % INPUTS:
-%    model:         Cobra model structure
+%    model:            Cobra model structure
 %
 % OPTIONAL INPUTS:
-% method        S       --> checks rxn S matrix (default)
-%               rxnAbbr --> checks rxn abbreviations
-%               FR      --> checks F + R matrix, where S:=-F+R, which ignores
-%                           reaction direction
+%    method:           options:
 %
+%                        * S --> checks rxn `S` matrix (default)
+%                        * rxnAbbr --> checks rxn abbreviations
+%                        * FR --> checks `F + R` matrix, where `S=-F+R`, which ignores
+%                          reaction direction
 %
 % OUTPUTS:
-%     modelOut          COBRA model structure without (with) duplicate reactions
-%     removedRxnInd     Reaction numbers in model that were (should be) removed
-%     keptRxnInd        Reaction numbers in model that were (should be) kept
+%    modelOut:         COBRA model structure without (with) duplicate reactions
+%    removedRxnInd:    Reaction numbers in model that were (should be) removed
+%    keptRxnInd:       Reaction numbers in model that were (should be) kept
+%
 % .. Authors:
 %           - Ronan Fleming rewritten 2017
 %           - Thomas Pfau June 2017, added boundsFlag
@@ -52,7 +54,7 @@ switch method
         end
         [~, ia, ic] = unique(model.rxns,'stable');
         removedRxnInd=oneToN(ia);
-        %C = setdiff(A,B) for vectors A and B, returns the values in A that 
+        %C = setdiff(A,B) for vectors A and B, returns the values in A that
         %are not in B with no repetitions.
         keptRxnInd=setdiff(oneToN,removedRxnInd);
     case {2,'S'}
@@ -81,16 +83,16 @@ switch method
             for n = 1:nRxn
                 bool = (ic == n);
                 if nnz(bool) > 1
-                    ind = oneToN(bool);                    
-                        
+                    ind = oneToN(bool);
+
                     keptOneRxnInd = ind(1);
                     removedOneRxnInd = ind(end);
-                    
+
                     if length(ind) > 2
                         warning(['Reaction: ' model.rxns{ind(1)} ' has more than one replicate'])
                     end
-                    
-                    
+
+
                     removedRxnInd = [removedRxnInd; removedOneRxnInd];
                     keptRxnInd = [keptRxnInd; keptOneRxnInd];
 
@@ -127,12 +129,12 @@ switch method
         % get unique cols, but do not change the order
         % [C,IA,IC] = unique(A,'rows') also returns index vectors IA and IC such
         % that C = A(IA,:) and A = C(IC,:).
-        if boundsFlag            
+        if boundsFlag
             [~, ia, ic] = unique([model.lb, normalA1' model.ub], 'rows', 'stable');
         else
             [~, ia, ic] = unique(normalA1', 'rows', 'stable');
         end
-        
+
 
         for n =1:nRxn
             bool = (ic == n);
@@ -148,7 +150,7 @@ switch method
 
                     removedRxnInd = [removedRxnInd; removedOneRxnInd];
                     keptRxnInd = [keptRxnInd; keptOneRxnInd];
-                    
+
                     if printLevel > 0
                         fprintf('%s\t', '     Keep: ');
                         formulas = printRxnFormula(model, model.rxns{keptOneRxnInd});
@@ -162,7 +164,7 @@ switch method
 end
 
 
-if length(removedRxnInd) == 0    
+if length(removedRxnInd) == 0
     if printLevel > 0
         fprintf('%s\n', ' no duplicates found.');
     end

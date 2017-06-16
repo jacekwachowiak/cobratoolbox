@@ -1,17 +1,16 @@
 function [solution] = relaxFBA(model, relaxOption)
-%
 % Finds the mimimal set of relaxations on bounds and steady state constraint
 % to make the FBA problem feasible
 %
 % .. math::
-%      min   c'v + lambda*||r||_0 + gamma*(||p||_0 + ||q||_0)
-%      s.t   S*v + r <=> b
-%            l - p <= v <= u + q
-%            r \in R^m
+%      min \quad c'v + lambda*||r||_0 + gamma*(||p||_0 + ||q||_0) \\
+%      s.t \quad S*v + r <=> b \\
+%            l - p \leq v \leq u + q \\
+%            r \in R^m \\
 %            p,q \in R_+^n
 %
-%      m - number of metabolites
-%      n - number of reactions
+% `m` - number of metabolites,
+% `n` - number of reactions
 %
 % USAGE:
 %
@@ -22,36 +21,42 @@ function [solution] = relaxFBA(model, relaxOption)
 %    relaxOption:    Structure containing the relaxation options:
 %
 %                      * internalRelax:
+%
 %                        * 0 = do not allow to relax bounds on internal reactions
 %                        * 1 = do not allow to relax bounds on internal reactions with finite bounds
 %                        * 2 = allow to relax bounds on all internal reactions
 %
 %                      * exchangeRelax:
+%
 %                        * 0 = do not allow to relax bounds on exchange reactions
 %                        * 1 = do not allow to relax bounds on exchange reactions of the type [0,0]
 %                        * 2 = allow to relax bounds on all exchange reactions
 %
 %                      * steadyStateRelax:
-%                        * 0 = do not allow to relax the steady state constraint S*v = b
-%                        * 1 = allow to relax the steady state constraint S*v = b
 %
-%                      * toBeUnblockedReactions - n x 1 vector indicating the reactions to be unblocked (optional)
-%                        * toBeUnblockedReactions(i) = 1 : impose v(i) to be positive
-%                        * toBeUnblockedReactions(i) = -1 : impose v(i) to be negative
+%                        * 0 = do not allow to relax the steady state constraint :math:`S*v = b`
+%                        * 1 = allow to relax the steady state constraint :math:`S*v = b`
+%
+%                      * toBeUnblockedReactions - `n x 1` vector indicating the reactions to be unblocked (optional)
+%
+%                        * toBeUnblockedReactions(i) = 1 : impose `v(i)` to be positive
+%                        * toBeUnblockedReactions(i) = -1 : impose `v(i)` to be negative
 %                        * toBeUnblockedReactions(i) = 0 : do not add any constraint
 %
-%                      * excludedReactions - n x 1 bool vector indicating the reactions to be excluded from relaxation (optional)
-%                        * excludedReactions(i) = false : allow to relax bounds on reaction i
-%                        * excludedReactions(i) = true : do not allow to relax bounds on reaction i
+%                      * excludedReactions - `n x 1` bool vector indicating the reactions to be excluded from relaxation (optional)
 %
-%                      * excludedMetabolites - m x 1 bool vector indicating the metabolites to be excluded from relaxation (optional)
-%                        * excludedMetabolites(i) = false : allow to relax steady state constraint on metabolite i
-%                        * excludedMetabolites(i) = true : do not allow to relax steady state constraint on metabolite i
+%                        * excludedReactions(i) = false : allow to relax bounds on reaction `i`
+%                        * excludedReactions(i) = true : do not allow to relax bounds on reaction `i`
+%
+%                      * excludedMetabolites - `m x 1` bool vector indicating the metabolites to be excluded from relaxation (optional)
+%
+%                        * excludedMetabolites(i) = false : allow to relax steady state constraint on metabolite `i`
+%                        * excludedMetabolites(i) = true : do not allow to relax steady state constraint on metabolite `i`
 %
 %                      * lamda - trade-off parameter of relaxation on steady state constraint
 %                      * gamma - trade-off parameter of relaxation on bounds
 %
-% Note, excludedReactions and excludedMetabolites override all other relaxation options.
+% Note that, `excludedReactions` and `excludedMetabolites` override all other relaxation options.
 %
 % OUTPUT:
 %    solution:       Structure containing the following fields:
@@ -61,13 +66,12 @@ function [solution] = relaxFBA(model, relaxOption)
 %                        * 1  = Solution found
 %                        * 0  = Infeasible
 %                        * -1 = Invalid input
-%                      * r - relaxation on steady state constraints S*v = b
+%                      * r - relaxation on steady state constraints :math:`S*v = b`
 %                      * p - relaxation on lower bound of reactions
 %                      * q - relaxation on upper bound of reactions
 %                      * v - reaction rate
 %
 % .. Author: - Hoai Minh Le	15/11/2015
-%
 
 [m,n] = size(model.S); %Check inputs
 
@@ -153,7 +157,7 @@ if ~isfield(relaxOption,'lambda')
 else
     relaxOption.lambda0= relaxOption.lambda;
 end
-   
+
 
 %Combine excludedReactions with internalRelax and exchangeRelax
 if relaxOption.internalRelax == 0 %Exclude all internal reactions
