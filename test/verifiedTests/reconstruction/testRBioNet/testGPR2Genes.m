@@ -26,5 +26,10 @@ Genes = GPR2Genes(model.grRules);
 % test output
 assert(isequal(model.genes, Genes'))
 
+% additional check
+genesNoUp = readCbModel([CBTDIR filesep 'test' filesep 'models' filesep 'Recon2.v04.mat']);
+genesWithUp = updateGenes(genesNoUp);
+assert(isequal(size(genesNoUp.genes), size(genesWithUp.genes)))
+
 % change the directory
 cd(currentDir)
