@@ -29,6 +29,7 @@ printLevel = 1;  % only print out names of models that don't parse
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 global CBTDIR
 if isempty(CBTDIR)
+  x=1
     tmp = which('initCobraToolbox');
     CBTDIR = tmp(1:end - length('/initCobraToolbox.m'));
 end
@@ -40,8 +41,9 @@ files = dir(originFolder);
 for k = 3:length(files)
     if strcmp(files(k).name(end - 2:end), 'xml')
         % read in the xml file
-        fileName = files(k).name;
+        fileName = files(k).name
         if ~exist([fileName(1:end - 3) 'mat'], 'file')
+          x=2
             filePathName = [originFolder filesep fileName];
             % save as mat file in the same directory
             % savedMatFile=[CBTDIR filesep 'testing' filesep 'testModels' filesep destFolder filesep fileName(1:end-4) '.mat'];
@@ -49,27 +51,33 @@ for k = 3:length(files)
             try
                 defaultBound = 1000;
                 fileType = 'SBML';
+                x=99
                 model = readCbModel(filePathName, defaultBound, fileType);
                 % disp(savedMatFile)
                 save(savedMatFile, 'model');
-                if printLevel > 1
+                if printLevel >= 1
+                  x=3
                     fprintf('%s%s\n', fileName, [' :compatible with readCbModel'])
                 end
             catch
                 if printLevel > 0
+                  x=4
                     fprintf('%s%s\n', fileName, [' :incompatible with readCbModel'])
                 end
                 % should not leave half finished files around if there are
                 % any
                 if exist(savedMatFile, 'file')
+                  x=5
                     rmfile(savedMatFile)
                 end
             end
         else
             if strcmp(fileName, 'textbook.xml')
+              x=6
                 % pause(eps)
             end
-            if printLevel > 1
+            if printLevel >= 1
+              x=7
                 fprintf('%s%s\n', fileName, [' :already parsed and compatible with readCbModel'])
             end
         end
