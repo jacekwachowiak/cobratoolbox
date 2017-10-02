@@ -1,9 +1,9 @@
-function [ExRxns, MaxTheoOut] = theoretMaxProd(model, criterion, inputrxn, normalize, rxns)
+function [ExRxns, MaxTheoOut] = theoretMaxProd(model, inputrxn, criterion, normalize, rxns)
 % Determines the max theoretical output for each exchange reaction
 %
 % USAGE:
 %
-%    [ExRxns, MaxTheoOut]= theoreticalMaxProduction(model, criterion, inputrxn, normalize, rxns)
+%    [ExRxns, MaxTheoOut]= theoreticalMaxProd(model, criterion, inputrxn, normalize, rxns)
 %
 % INPUT:
 %    model:         model structure
@@ -27,7 +27,7 @@ function [ExRxns, MaxTheoOut] = theoretMaxProd(model, criterion, inputrxn, norma
 %
 % .. Author: - Jan Schellenberger 11/7/08
 
-if nargin < 2 % find the exchange reactions
+if nargin < 3 % find the exchange reactions
     criterion = 'pr_mol';
 end
 if isempty(criterion)

@@ -17,8 +17,8 @@ cd(fileDir);
 model = readCbModel([CBTDIR filesep 'test' filesep 'models' filesep 'ecoli_core_model.mat']);
 
 % function outputs
-[ExRxns, MaxTheoOut] = theoretMaxProd(model, criterion, inputrxn, normalize, rxns)
-
+[ExRxns, MaxTheoOut] = theoretMaxProd(model, 'EX_glu(e)')
+[ExRxns, MaxTheoOut]= theoreticalMaxProd(model, '', 'EX_glu(e)', false, model.rxns)
 % tests
 assert(isequal(0, 0));
 
