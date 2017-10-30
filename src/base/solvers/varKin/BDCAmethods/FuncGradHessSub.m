@@ -1,5 +1,5 @@
 function [func, grad, Hess] = FuncGradHessSub(x, y, F, R, kin, rho)
-% SubGradHess provides the function value, the gradient, and the Hessian
+% `SubGradHess` provides the function value, the gradient, and the Hessian
 % of the subproblem of DCA and BDCA to be used in fminunc.
 %
 % USAGE:
@@ -9,7 +9,7 @@ function [func, grad, Hess] = FuncGradHessSub(x, y, F, R, kin, rho)
 % INPUT:
 %    x,y:     points
 %    F:       Forward stoichiometric matrix
-%    kin:     kinetics parameter in `R^(2n)`
+%    kin:     kinetics parameter in :math:`R^{2n}`
 %    rho:     strongly comvex modulus
 %
 %
