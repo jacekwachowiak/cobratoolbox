@@ -6,6 +6,7 @@ The COBRA Toolbox
 
    index.html
    installation
+   vonBertalanffy
    modules/index
    tutorials/index
    contributing
