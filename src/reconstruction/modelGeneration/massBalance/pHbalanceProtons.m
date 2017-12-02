@@ -342,9 +342,9 @@ for n=1:nRxn
                             size(metCompartBool1)
                             size(metCompartBool2)
                             size(model.S)
-                            deltaHBound
-                            model.S(:,n) = model.S(:,n) - deltaHBound'.*model.S(:,n);
-                            model.S(:,n) = model.S(:,n) - deltaHBound'.*model.S(:,n);
+                            size(deltaHBound)
+                            %model.S(:,n) = model.S(:,n) - deltaHBound'.*model.S(:,n);
+                            %model.S(:,n) = model.S(:,n) - deltaHBound'.*model.S(:,n);
                             %model.S(indexHRxn1,n) = model.S(indexHRxn1,n) - deltaHBound(metCompartBool1)*model.S(metCompartBool1,n);
                             %model.S(indexHRxn2,n) = model.S(indexHRxn2,n) - deltaHBound(metCompartBool2)*model.S(metCompartBool2,n);
                         end
