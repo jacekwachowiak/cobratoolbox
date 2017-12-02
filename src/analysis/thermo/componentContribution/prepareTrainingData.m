@@ -17,7 +17,7 @@ function training_data = prepareTrainingData(model, printLevel, params)
 %
 %
 % OUTPUTS:
-%    training_data:                    strucutre with fields
+%    training_data:                    structure with fields
 %
 %                                        * .DfG0 - `m x 1` array of component contribution estimated
 %                                          standard Gibbs energies of formation.

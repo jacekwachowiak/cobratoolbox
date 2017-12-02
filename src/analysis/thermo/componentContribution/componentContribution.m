@@ -104,8 +104,22 @@ cov_dG0 = V_rc * MSE_rc + V_gc * MSE_gc + V_inf * MSE_inf;
 % params
 
 % Map estimates back to model
-model.DfG0 = dG0_cc(trainingData.Model2TrainingMap);
-model.covf = cov_dG0(trainingData.Model2TrainingMap, trainingData.Model2TrainingMap);
+%trainingData
+%model
+%dG0_cc
+%cov_dG0
+%size(trainingData.Model2TrainingMap)
+%size(dG0_cc)
+%size(cov_dG0)
+model.DfG0 = trainingData.Model2TrainingMap;
+model.covf = trainingData.Model2TrainingMap * trainingData.Model2TrainingMap';
+size(model.DfG0)
+size(model.covf)
+
+model.DfG0(1:size(dG0_cc)) = dG0_cc;%(trainingData.Model2TrainingMap);
+model.covf(1:size(cov_dG0), 1:size(cov_dG0)) = cov_dG0;%(trainingData.Model2TrainingMap, trainingData.Model2TrainingMap);
+size(model.DfG0)
+size(model.covf)
 
 %model.DfG0_Uncertainty = diag(sqrt(model.covf));
 diag_conf=diag(model.covf);

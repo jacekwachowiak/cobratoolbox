@@ -78,7 +78,7 @@ end
 % Check for model.metCompartments
 if isempty(model.metCompartments)
     fprintf('\nField metCompartments is missing from model structure. Attempting to create it.\n')
-    if ~any(cellfun('isempty',regexp(model.mets,'\[\w\]$')))
+    if ~any(cellfun('isempty',regexp(model.mets,'\_[a-zA-Z0-9]$')))
         model.metCompartments = getCompartment(model.mets);
         fprintf('Attempt to create field metCompartments successful.\n')
     else
