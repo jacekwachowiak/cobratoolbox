@@ -336,8 +336,17 @@ for n=1:nRxn
                             %                         end
 
                             %mass balance reactant reactions
-                            model.S(indexHRxn1,n)=model.S(indexHRxn1,n) - deltaHBound(metCompartBool1)*model.S(metCompartBool1,n);
-                            model.S(indexHRxn2,n)=model.S(indexHRxn2,n) - deltaHBound(metCompartBool2)*model.S(metCompartBool2,n);
+                            indexHRxn1=indexHRxn1
+                            indexHRxn2=indexHRxn2
+                            n=n
+                            size(metCompartBool1)
+                            size(metCompartBool2)
+                            size(model.S)
+                            deltaHBound
+                            model.S(:,n) = model.S(:,n) - deltaHBound'.*model.S(:,n);
+                            model.S(:,n) = model.S(:,n) - deltaHBound'.*model.S(:,n);
+                            %model.S(indexHRxn1,n) = model.S(indexHRxn1,n) - deltaHBound(metCompartBool1)*model.S(metCompartBool1,n);
+                            %model.S(indexHRxn2,n) = model.S(indexHRxn2,n) - deltaHBound(metCompartBool2)*model.S(metCompartBool2,n);
                         end
                     end
                 end
