@@ -36,9 +36,13 @@ model.is = 0.15*ones(length(model.compartments),1);
 model.chi = [0; 30; 0; 19; -155; 0; 0; -2.303*8.3144621e-3*model.T*(model.ph(model.compartments == 'x') - model.ph(model.compartments == 'c'))/(96485.3365e-6); 0];
 basePath='~/work/sbgCloud';
 molfileDir = [basePath '/data/molFilesDatabases/explicitHMol'];
+concMinDefault=1e-5; % Lower bounds on metabolite concentrations in mol/L
+concMaxDefault=1e-2; % Upper bounds on metabolite concentrations in mol/L
+metBoundsFile=which('HumanCofactorConcentrations.txt'); % already in the COBRA toolbox
 % reference data
 
 % function outputs
+model=readMetRxnBoundsFiles(model,setDefaultConc,setDefaultFlux,concMinDefault,concMaxDefault,metBoundsFile,[],0);
 model = setupComponentContribution(model, molfileDir);
 training_data = prepareTrainingData(model, 0);
 [model,~] = componentContribution(model, training_data);
