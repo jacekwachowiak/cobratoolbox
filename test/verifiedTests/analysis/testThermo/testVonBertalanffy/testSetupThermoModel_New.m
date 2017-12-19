@@ -40,7 +40,6 @@ molfileDir = [basePath '/data/molFilesDatabases/explicitHMol'];
 
 % function outputs
 model = setupComponentContribution(model, molfileDir);
-
 training_data = prepareTrainingData(model, 0);
 [model,~] = componentContribution(model, training_data);
 
